@@ -1,0 +1,272 @@
+<div style="text-align:center;" class="w-100">
+    <br><br><br><h3><b>REGISTRATION FORM</b></h3><br>
+  </div>
+
+  <div class="row">
+
+    
+    <div class="col-sm-12 col-md-11" style="background-color: #e6e6e6; margin-left: 50px; margin-right: 0px;">
+
+        <div class="contact-form w-100">
+
+                                        
+             
+            <form action="/customer/register" method="POST">
+
+                <div class="row" >
+
+                   <!-- Hidden Fields -->
+                   <input name="hidden_city" type="hidden" value="Indore" min="1" maxlength="50" required="">
+                   
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                             <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1. Name</font></font></label>
+                            <input name="candidate_name" type="text" class="form-control" id="transliterateTextarea" placeholder="Enter something.." autocomplete="off" min="3" maxlength="50" required="">
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                             <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2. Father's / Husband's name</font></font></label>
+                            <input name="guardian_name" type="text" class="form-control" id="transliterateTextarea" placeholder="Enter something.." autocomplete="off" min="3" maxlength="50" required="">
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                             <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3. Date of birth</font></font></label>
+                            <input name="dob" type="date" class="form-control" id="dob" onblur="ageCalculator()" placeholder="Enter something.." autocomplete="off" min="3" maxlength="50" required="">
+    </div>
+                    </div>
+                    
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                             <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Age</font></font></label>
+                            <input name="age" type="number" class="form-control" id="age" placeholder="Enter something.." autocomplete="off" min="3" maxlength="50" required="">
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                             <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">4. Address</font></font></label>
+                            <input name="address" type="text" class="form-control" id="" placeholder="Enter something.." autocomplete="off" min="3" maxlength="50" required="">
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                             <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ward no.</font></font></label>
+                            <input name="ward_no" type="text" class="form-control" id="" placeholder="Enter something.." autocomplete="off" min="3" maxlength="50" required="">
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                             <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">5. Educational Qualification</font></font></label>
+                            <input name="edu_qualification" type="text" class="form-control" id="" placeholder="Enter something.." autocomplete="off" min="3" maxlength="50" required="">
+                        </div>
+                    </div>
+
+                     <div class="col-sm-4">
+                        <div class="form-group">
+                             <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Technical Qualification (optional)</font></font></label>
+                            <input name="tech_qualification" type="text" class="form-control" id="" placeholder="Enter something.." autocomplete="off" min="3" maxlength="50">
+                        </div>
+                    </div>
+                   
+                     <div class="col-sm-4">
+                        <div class="form-group">
+                             <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">6. Aadhar/ ID Proof no.</font></font></label>
+                            <input name="aadhar_no" type="text" class="form-control" id="" placeholder="Enter something.." autocomplete="off" min="12" maxlength="12" pattern="[0-9]+" required="">
+                        </div>
+                    </div>
+                   
+                     <div class="col-sm-4">
+                        <div class="form-group">
+                          <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">7. Register As:</font></font></label>
+                          <select name="service_area" class="form-control" required="">
+                            <option selected="" disabled="">SELECT</option>
+                            <option value="Individual"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Individual</font></font></option>
+                            <option value="Business"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Business</font></font></option>
+                          </select>
+                         </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                           <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Business PAN </font></font></label>
+                          <input name="Pan" type="text" class="form-control" id="" placeholder="If Registered as Business" autocomplete="off" min="3" maxlength="50" >
+                      </div>
+                  </div>
+
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                         <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">GST Number </font></font></label>
+                        <input name="gst" type="text" class="form-control" id="" placeholder="If Registered as Business" autocomplete="off" min="9" maxlength="50" >
+                    </div>
+                </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                             <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">8. Bank Account Number</font></font></label>
+                            <input name="bank_account" type="text" class="form-control" id="" placeholder="Enter something.." autocomplete="off" min="3" maxlength="50" required="">
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                             <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bank Name and Branch</font></font></label>
+                            <input name="bank_name" type="text" class="form-control" id="" placeholder="Enter something.." autocomplete="off" min="3" maxlength="50" required="">
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                             <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">9. Mobile Number</font></font></label>
+                            <input name="mobile_no" type="number" class="form-control" id="" placeholder="Enter something.." autocomplete="off" min="10" maxlength="10" pattern="[789][0-9]{9}" required="">
+                        </div>
+                    </div>
+  
+  
+                    
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                             <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">10. Area of ​​service</font></font></label>
+                            <select name="service_area" class="form-control" required="">
+                              <option selected="" disabled="">SELECT</option>
+                              <option value="Plumber"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Plumber</font></font></option>
+                              <option value="Electrician"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Electrician</font></font></option>
+                              <option value="Painter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Painter</font></font></option>
+                              <option value="Carpenter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Carpenter</font></font></option>
+                              <option value="Driver"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Driver</font></font></option>
+                              <option value="Housekeeping"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">House keeping</font></font></option>
+                              <option value="Tailors"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tailors</font></font></option>
+                              <option value="mobile repairing"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mobile repairing</font></font></option>
+                              <option value="Mali"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mali</font></font></option>
+                              <option value="Embroider"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Embroider</font></font></option>
+                              <option value="Autos_Cabs"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Autos / Cabs</font></font></option>
+                             <option value="Security guard"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Security guard</font></font></option>
+                              <option value="Restaurant"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Restaurant</font></font></option>
+                              <option value="Doctor / Hospital"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Doctor / Hospital</font></font></option>
+                              <option value="Home tutor"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Home tutor</font></font></option>
+                             <option value="RO / Fridge / Cooler / Washing Machine Mechanic"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">RO / Fridge / Cooler / Washing Machine Mechanic</font></font></option>
+                              <option value="Computer hardware"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Computer hardware</font></font></option>
+                              <option value="The mechanic"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The mechanic</font></font></option>
+                              <option value="Two wheeler / four wheel mechanic"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Two wheeler / four wheel mechanic</font></font></option>
+                              <option value="Beauty Parlor / Hair Artist"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Beauty Parlor / Hair Artist</font></font></option>
+                              <option value="other"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">other</font></font></option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                             <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">11. Place of Business/Service</font></font></label>
+                            <input name="business_area" type="text" class="form-control" id="" placeholder="Enter something.." autocomplete="off" min="3" maxlength="50" required="">
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                             <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">12. Years of service work experience</font></font></label>
+                            <input name="area_experience" type="text" class="form-control" id="" placeholder="Enter something.." autocomplete="off" min="3" maxlength="50" required="">
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                             <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">13. Class</font></font></label>
+                            <select name="category" class="form-control" required="">
+                              <option selected="" disabled=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SELECT</font></font></option>
+                              <option value="अनुसूचित जनजाति"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Scheduled Tribes</font></font></option>
+                              <option value="अनुसूचित जाति"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">scheduled caste</font></font></option>
+                              <option value="अ.पि.वर्ग"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">S.P.</font></font></option>
+                              <option value="सामान्य"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Normal</font></font></option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                             <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">14. Other Details</font></font></label>
+                            <input name="other_information" type="text" class="form-control" id="" placeholder="Enter something.." autocomplete="off" min="3" maxlength="50">
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                             <hr>
+    </div>
+  </div>
+                    
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                             <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Passport size photo</font></font></label>
+                             <input name="attachment_photo" type="file" accept="image/*" class="form-control" >
+    </div>
+  </div>
+                   
+                     <div class="col-sm-3">
+                        <div class="form-group">
+                             <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Copy of Business / Skill certificate</font></font></label>
+                             <input name="attachment_certificate" type="file" accept="image/*" class="form-control" >
+    </div>
+  </div>
+                   
+                     <div class="col-sm-3">
+                        <div class="form-group">
+                             <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Copy of Aadhar card/ ID Proof</font></font></label>
+                             <input name="attachment_aadhar" type="file" accept="image/*" class="form-control" >
+    </div>
+  </div>
+                   
+                     <div class="col-sm-3">
+                        <div class="form-group">
+                             <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Copy Bank account pass book</font></font></label>
+                             <input name="attachment_passbook" type="file" accept="image/*" class="form-control">
+    </div>
+  </div>
+                    
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                             <hr>
+                             <h4 style="text-align: center;">Declaration</h4>
+                             <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                               I declare that the information given by me is absolutely true. </font><font style="vertical-align: inherit;">If the information supplied by me is found to be false, the application should be automatically rejected.
+                               </font></font></p>
+                             <hr>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div style="text-align: center;" >
+                    <div class="button" style="align-items: center;">
+                        <button name="submit_reg" type="submit" class="btn btn-primary"><font style="vertical-align: center;">
+                        Submit </font><i class="fa fa-long-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+            </form>
+            
+            
+              <div class="col-md-12">
+                
+                  <hr>
+                  
+                  <!--<p class="">
+                    <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal2" class="btn btn-info"><i class="fa fa-download"></i> Download Registration Report</a>
+                  </p>-->
+                  
+                </div>
+                
+                
+           
+            
+
+        </div>
+
+    
+    
+      </div>
+   
+</div>

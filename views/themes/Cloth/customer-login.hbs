@@ -1,0 +1,45 @@
+
+<main class="login-page container top-marg-75">
+  <div class="row">
+    <div class="col-md-6 m-auto">
+      <div class="card border-0 box-shadow">
+        <div class="card-body">
+          <h2 class="h4 mb-3 loginheading">Sign in</h2>
+          <hr>
+          <form class="needs-validation" novalidate autocomplete="off" id="signin-tab">
+            <div class="input-group-overlay form-group">
+              <div class="input-group-prepend-overlay"><span class="input-group-text"><i class="czi-mail"></i></span>
+              </div>
+              <input class="form-control prepended-form-control" type="text" id="phone2" name="phone2" placeholder="Phone Number" required>
+               <div class="invalid-feedback">Please provide a valid email address.</div>
+            </div>
+            <div class="input-group-overlay form-group">
+              <div class="input-group-prepend-overlay"><span class="input-group-text"><i class="czi-locked"></i></span>
+              </div>
+              <div class="password-toggle" for="si-password">
+                <input class="form-control prepended-form-control" type="password" id="password2" name="password" placeholder="Password" required>
+                <label class="password-toggle-btn">
+                  <input class="custom-control-input password-show" type="checkbox"><i
+                    class="czi-eye password-toggle-indicator"></i><span class="sr-only">Show password</span>
+                </label>
+              </div>
+            </div>
+            <div class="d-flex flex-wrap justify-content-between">
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" checked id="remember_me">
+                <label class="custom-control-label" for="remember_me">Remember me</label>
+              </div><a class="nav-link-inline font-size-sm" href="/customer/forgot-password">Forgot password?</a>
+               <a class="nav-link-inline font-size-sm" href="#signin-modal" data-toggle="modal">    
+                      I don't have an account
+                 </a>
+            </div>
+            <hr class="mt-4">
+            <div class="text-right pt-4">
+              <button class="btn btn-primary btn-shadow" id="customerloginForm2" type="submit"><i class="czi-sign-in mr-2 ml-n21"></i>Sign In</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

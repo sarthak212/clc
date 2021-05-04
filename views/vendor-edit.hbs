@@ -1,0 +1,47 @@
+{{> partials/menu}}
+<main role="main" class="ml-sm-auto col-lg-10 px-4">
+	<div class="col-md-12">
+		<div class="page-header">
+			<div class="float-right">
+				<button type="submit" id="btnVendorEdit" class="btn btn-outline-success">{{ @root.__ "Update" }}</button>
+			</div>
+			<h2>{{ @root.__ "Supervisors edit" }}</h2>
+		</div>
+		<form id="vendorEditForm" data-toggle="validator">
+			<input type="hidden" id="vendorId" value="{{vendor._id}}" />
+			<div class="form-group">
+				<label>{{ @root.__ "Users name" }}</label>
+				<input type="text" class="form-control" id="vendorName" value="{{vendor.userName}}" required>
+			</div>
+			<div class="form-group">
+				<label>{{ @root.__ "User email" }}</label>
+				<input type="text" class="form-control" id="vendorEmail" value="{{vendor.userEmail}}" readonly>
+			</div>
+            <div class="form-group">
+				<label>{{ @root.__ "Driving License" }}</label>
+				<input type="text" class="form-control" id="vendorAadhar" value="{{vendor.userAadhar}}" readonly>
+			</div>
+			<div class="form-group">
+				<label>{{ @root.__ "User Phone" }}</label>
+				<input type="text" class="form-control" id="vendorPhone" value="{{vendor.userPhone}}" readonly>
+			</div>
+			<div class="form-group">
+				<label>{{ @root.__ "User password" }} {{#ifCond session.user '==' vendor.vendorEmail}}*{{/ifCond}}</label>
+				<input autocomplete="off" type="password" class="form-control" id="vendorPassword" {{#ifCond session.user '==' vendor.vendorEmail}}required{{/ifCond}}>
+			</div>
+			<div class="form-group">
+				<label>{{ @root.__ "Password confirm" }} {{#ifCond session.user '==' vendor.vendorEmail}}*{{/ifCond}}</label>
+				<input autocomplete="off" type="password" data-validation-match-match="vendorPassword" data-validation-match-message="Password values to not match" class="form-control" {{#ifCond session.user '==' vendor.vendorEmail}}required{{/ifCond}}>
+			</div>
+			<div class="form-group">
+				<label>API Key</label>
+				<div class="input-group">
+					<input type="text" class="form-control" id="apiKey" value="{{vendor.apiKey}}" aria-label="..." readonly>
+					<div class="input-group-append">
+						<button id="btnGenerateAPIkey" class="btn btn-outline-success">{{ @root.__ "Generate" }}</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</main>

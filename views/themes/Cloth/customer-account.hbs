@@ -1,0 +1,417 @@
+<input type="hidden" id="customerId" value={{customerArray._id}}>
+<div id="account" class="col-11 mx-auto top-marg-75">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/"><i class="fa fa-home"></i></a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="/customer/account">Account</a></li>
+        </ol>
+    </nav>
+    <div class="row">
+        <div id="content" class="col-12 col-md-4 ">
+
+            <div class="account-right">
+
+                <div class="row account-part">
+                    <div id="editDetails" class="w-100">
+                        <a href="#orderDetails">
+                            <span><img
+                                    src="http://templatetasarim.com/opencart/Grocery/Fresh/image/catalog/account/edit-account.png"
+                                    class="img-respinsive" /></span><span class="box-heading">Details<br>
+                                <h5>View your details</h5>
+                            </span>
+                        </a>
+                    </div>
+                     <div id="orderDetails" class="w-100">
+                        <a href="#">
+                            <span><img
+                                    src="http://templatetasarim.com/opencart/Grocery/Fresh/image/catalog/account/order-list.png"
+                                    class="img-respinsive" /></span><span>Orders<br>
+                                <h5>Check your order</h5>
+                            </span>
+                        </a>
+                    </div>
+                    {{!-- <div id="editAddress" class="col-lg-6 col-md-6 col-sm-6 col-xs-12 acc-box">
+                        <a href="#">
+                            <span><img
+                                    src="http://templatetasarim.com/opencart/Grocery/Fresh/image/catalog/account/location.png"
+                                    class="img-respinsive" /></span><span class="box-heading">Address<br>
+                                <h5>Edit your address</h5>
+                            </span>
+                        </a>
+                    </div> --}}
+                  <div id="pickupAddress" class="w-100">
+                        <a href="#orderDetails">
+                            <span><img
+                                    src="http://templatetasarim.com/opencart/Grocery/Fresh/image/catalog/account/location.png"
+                                    class="img-respinsive" /></span><span class="box-heading">Pickup Address<br>
+                                <h5>Edit your address</h5>
+                            </span>
+                        </a>
+                    </div>
+                     <div id="dropupAddress" class="w-100">
+                        <a href="#orderDetails">
+                            <span><img
+                                    src="http://templatetasarim.com/opencart/Grocery/Fresh/image/catalog/account/location.png"
+                                    class="img-respinsive" /></span><span class="box-heading">Dropup Address<br>
+                                <h5>Edit your address</h5>
+                            </span>
+                        </a>
+                    </div>
+                    <div id="passwordDetails" class="w-100">
+                        <a href="#orderDetails">
+                            <span><img
+                                    src="http://templatetasarim.com/opencart/Grocery/Fresh/image/catalog/account/pass.png"
+                                    class="img-respinsive" /></span><span>password<br>
+                                <h5>Change Your Passowrd</h5>
+                            </span>
+                        </a>
+                    </div>
+                 
+                    {{!-- <div id="newsletterDetails" class="col-lg-6 col-md-6 col-sm-6 col-xs-12 acc-box">
+                        <a href="#">
+                            <span><img
+                                    src="http://templatetasarim.com/opencart/Grocery/Fresh/image/catalog/account/newsletter.png"
+                                    class="img-respinsive" /></span><span>newsletter<br>
+                                <h5>subscribe for newsletter</h5>
+                            </span>
+                        </a>
+                    </div> --}}
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-8">
+        {{!-- Details Section --}}
+    <div id="detailsForm" class="accdata show">
+        <form id="customer-form" class="form1control acc" role="form" data-toggle="validator" novalidate="false">
+            <div class="forminput">
+                <input type="email" id="shipEmail" name="shipEmail"
+                    placeholder="Email address" value="{{@root.session.customerEmail}}" disabled>
+                    <label for="shipEmail" style="margin-top: -14px;">Email</label></div>
+
+             <div class="forminput">
+                <input type="text" id="shiphone" name="shiphone"
+                    placeholder="Phone" value="{{@root.session.customerPhone}}" disabled>
+                    <label  for="shiphone" style="margin-top: -14px;">Phone Number</label></div>
+
+        <!--    <div class="container">
+                <input type="text" class="container__input customerDetails" id="shipFirstname" name="shipFirstname"
+                    placeholder="First name" value="{{@root.session.customerFirstname}}" required>
+                <label id="userLabel" for="FirstName" class="container__label">First Name</label></div>
+
+            <div class="container">
+                <input type="text" class="container__input customerDetails" id="shipLastname" name="shipLastname"
+                    placeholder="Last name" value="{{@root.session.customerLastname}}" required>
+                <label id="userLabel" for="LastName" class="container__label">Last Name</label></div> -->
+           
+        </form>
+    </div>
+
+    {{!-- Password Section --}}
+    <div id="passwordForm" class="accdata">
+        <form id="customer-form" class="form1control acc" role="form" data-toggle="validator" novalidate="false">
+            <div class="forminput">
+                <input type="password"  id="" name="" placeholder="Password"
+                    value="" required>
+
+                <label id="userLabel" for="pass" style="margin-top: -14px;">Password</label></div>
+
+            <div class="forminput">
+                <input type="password" id="" name=""
+                    placeholder="Confirm Pasword" value="" required>
+                <label id="userLabel" for="confirmPass" style="margin-top: -14px;">Confirm</label></div>
+
+            <button class="form__submit" id="passwordSave" type="button" value="submit">Submit</button>
+        </form>
+    </div>
+
+  
+
+    <div id="orderForm1" class="accdata">
+        <div class="col-12 bottom-pad-15 no-pad-right">
+            <div class="card top-marg-15">
+                <div class="card-body">
+                    <h3 class="card-heading">{{ @root.__ "Pickup Address" }}</h3>
+                    <div id="accordion" class="customeraddress">
+                        {{#unless customerArray.pickupaddress}}
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                There are no Address for this account. <a class="text-success" href="/">Add Address
+                                    here</a>
+                            </div>
+                        </div>
+                        {{/unless}}
+                        {{#each customerArray.pickupaddress}}
+                        
+                        <div class="address">
+                  <div class="number">
+                    {{#ifCond @root.session.customerpickaddress "==" this.addressline}}
+                    <div>
+                      <img src="/images/tick1.png" alt="Choose Address">
+                    </div>
+                    {{/ifCond}}
+                    <div>
+                      <h4>{{this.name}} {{this.phone}}</h4>
+                    </div>
+                  </div>
+                  <div class="add">
+                 {{this.addressline}} {{this.city}}, {{this.pincode}}
+                  </div>
+             
+                  <div class="button">
+                      <a href="/customer/userEditPick/{{@key}}" data-id="{{@key}}">Edit</a>
+                    <button id="pickDelete" data-id="{{@key}}" class="pickDelete">Delete</button>
+                  </div>
+                </div>
+                <hr>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="orderForm2" class="accdata">
+        <div class="col-12 bottom-pad-15 no-pad-right">
+            <div class="card top-marg-15">
+                <div class="card-body">
+                    <h3 class="card-heading">{{ @root.__ "Dropup Address" }}</h3>
+                    <div id="accordion" class="customeraddress">
+                        {{#unless customerArray.dropupaddress}}
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                There are no Address for this account. <a class="text-success" href="/">Add Address
+                                    here</a>
+                            </div>
+                        </div>
+                        {{/unless}}
+                        {{#each customerArray.dropupaddress}}
+                        
+                            <div class="address">
+                  <div class="number">
+                    {{#ifCond @root.session.customerpickaddress "==" this.addressline}}
+                    <div>
+                      <img src="/images/tick1.png" alt="Choose Address">
+                    </div>
+                    {{/ifCond}}
+                    <div>
+                      <h4>{{this.name}} {{this.phone}}</h4>
+                    </div>
+                  </div>
+                  <div class="add">
+                 {{this.addressline}} {{this.city}}, {{this.pincode}}
+                  </div>
+             
+                  <div class="button">
+                      <a href="/customer/userEditDrop/{{@key}}" data-id="{{@key}}">Edit</a>
+                    <button id="dropDelete" data-id="{{@key}}" class="dropDelete"> Delete </button>
+                  </div>
+                </div>
+                <hr>
+                        {{/each}}
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div id="orderForm" class="accdata">
+        <div class="col-12 bottom-pad-15 no-pad-right">
+            <div class="card top-marg-15">
+                <div class="card-body">
+                    <h3 class="card-heading">{{ @root.__ "Orders" }}</h3>
+                    <div id="accordion">
+                        {{#unless orders}}
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                There are no orders for this account. <a class="text-success" href="/">Order
+                                    here</a>
+                            </div>
+                        </div>
+                        {{/unless}}
+                        {{#each orders}}
+                        <div class="card mb-3">
+                            <div class="card-header" id="headingOne">
+                                <p class="mb-0">
+                                    OrderId: {{this._id}} -
+                                    Date: {{formatDate this.orderDate "DD/MM/YYYY hh:mmA"}}
+                                    <button class="btn btn-sm btn-outline-success float-right" data-toggle="collapse"
+                                        data-target="#collapse{{this._id}}" aria-expanded="true"
+                                        aria-controls="collapse{{this._id}}">
+                                        View
+                                    </button>
+                                </p>
+                            </div>
+                            <div id="collapse{{this._id}}" class="collapse orderScroll" aria-labelledby="headingOne"
+                                data-parent="#accordion">
+                                <div class="card-body">
+                                    <div class="formlevel">
+                                        {{#ifCond this.orderStatus "==" "Completed"}}
+                                        <div class="stages">                 
+                                                <label for="one" class="check">&check; <span class="titlelevel">Booked</span></label>
+                                                <label for="two" class="check">&check; <span class="titlelevel">PickUp</span></label>
+                                                <label for="three" class="check">&check; <span class="titlelevel">Serviced</span></label>
+                                                <label for="four" class="check active">&check; <span class="titlelevel">Completed</span></label>
+                                            </div>
+                                                <span class="progress1 width4"><span></span></span>
+                                        {{/ifCond}}
+                                        {{#ifCond this.orderStatus "==" "Service Completed"}}
+                                        <div class="stages">                 
+                                                <label for="one" class="check">&check; <span class="titlelevel">Booked</span></label>
+                                                <label for="two" class="active">&check; <span class="titlelevel">PickUp</span></label>
+                                                <label for="three" class="active check">&check; <span class="titlelevel">Serviced</span></label>
+                                                <label for="four">4 <span class="titlelevel">Completed</span></label>
+                                            </div>
+                                                <span class="progress1 width3"><span></span></span>
+                                        {{/ifCond}}
+                                        {{#ifCond this.orderStatus "==" "Vehicle PickUp"}}
+                                        <div class="stages">                 
+                                                <label for="one" class="check">&check; <span class="titlelevel">Booked</span></label>
+                                                <label for="two" class="active check">&check; <span class="titlelevel">PickUp</span></label>
+                                                <label for="three">2 <span class="titlelevel">Serviced</span></label>
+                                                <label for="four">4 <span class="titlelevel">Completed</span></label>
+                                            </div>
+                                                <span class="progress1 width2"><span></span></span>
+                                        {{/ifCond}}
+                                        {{#ifCond this.orderStatus "==" "Paid"}}
+                                        <div class="stages">                 
+                                                <label for="one" class="active check">&check; <span class="titlelevel">Booked</span></label>
+                                                <label for="two">2 <span class="titlelevel">PickUp</span></label>
+                                                <label for="three">2 <span class="titlelevel">Serviced</span></label>
+                                                <label for="four">4 <span class="titlelevel">Completed</span></label>
+                                            </div>
+                                                <span class="progress1 width1"><span></span></span>
+                                        {{/ifCond}}
+                                        {{#ifCond this.orderStatus "==" "Booked"}}
+                                        <div class="stages">                 
+                                                <label for="one" class="active check">&check; <span class="titlelevel">Booked</span></label>
+                                                <label for="two">2 <span class="titlelevel">PickUp</span></label>
+                                                <label for="three">2 <span class="titlelevel">Serviced</span></label>
+                                                <label for="four">4 <span class="titlelevel">Completed</span></label>
+                                            </div>
+                                                <span class="progress1 width1"><span></span></span>
+                                        {{/ifCond}}
+                                        {{#ifCond this.orderStatus "==" "Accepted"}}
+                                        <div class="stages">                 
+                                                <label for="one" class="active check">&check; <span class="titlelevel">Booked</span></label>
+                                                <label for="two">2 <span class="titlelevel">PickUp</span></label>
+                                                <label for="three">2 <span class="titlelevel">Serviced</span></label>
+                                                <label for="four">4 <span class="titlelevel">Completed</span></label>
+                                            </div>
+                                                <span class="progress1 width1"><span></span></span>
+                                        {{/ifCond}}
+                                    </div>
+                                    {{#ifCond this.orderStatus "==" "Service Completed"}}
+                                    <div class="paynow">
+                                        <button class="btn btn-primary" id="razorpay" data-id="{{../this._id}}">Pay Now</button>
+                                    </div>
+                                    {{/ifCond}}
+                                    <ul class="list-group">
+                                        <li class="list-group-item list-group-input-pad">
+                                            <strong class="float-left"> Order status: </strong><span
+                                                class="text-{{getStatusColor this.orderStatus}} float-right">{{this.orderStatus}}</span>
+                                        </li>
+                                        <li class="list-group-item"><strong class="float-left"> {{ @root.__ "Order date" }}:
+                                            </strong><span
+                                                class="float-right">{{formatDate result.orderDate "DD/MM/YYYY hh:mmA"}}</span>
+                                        </li>
+                                        <li class="list-group-item"><strong class="float-left"> {{ @root.__ "Order ID" }}:
+                                            </strong><span class="float-right">{{this._id}}</span></li>
+                                        {{#if result.orderExpectedBtc }}
+                                        <li class="list-group-item"><strong class="float-left"> {{ @root.__ "Order Expected BTC" }}:
+                                            </strong><span class="float-right">{{this.orderExpectedBtc}}</span></li>
+                                        {{/if}}
+                                        {{#if this.orderReceivedBtc }}
+                                        <li class="list-group-item"><strong class="float-left"> {{ @root.__ "Order Received BTC" }}:
+                                            </strong><span class="float-right">{{this.orderReceivedBtc}}</span></li>
+                                        {{/if}}
+                                        {{#if this.orderBlockonomicsTxid }}
+                                        <li class="list-group-item"><strong class="float-left">
+                                                {{ @root.__ "Order Blockonomics Txid" }}: </strong><span
+                                                class="float-right">{{this.orderBlockonomicsTxid}}</span></li>
+                                        {{/if}}
+                           <li class="list-group-item"><strong class="float-left"> Supervisor Name:
+                                            </strong><span
+                                                class="float-right">{{this.supervisor.[0].Name}}</span>
+                                        </li>
+                                        <li class="list-group-item"><strong class="float-left"> {{ @root.__ "Supervisor License Number" }}:
+                                            </strong><span
+                                                class="float-right">{{this.supervisor.[0].AddharNumber}}</span>
+                                        </li>
+                                        <li class="list-group-item"><strong class="float-left"> {{ @root.__ "Supervisor Phone Number" }}:
+                                            </strong><span
+                                                class="float-right">{{this.supervisor.[0].PhoneNumber}}</span>
+                                        </li>
+                                        <li class="list-group-item"><strong class="float-left"> Vehicle Number:
+                                            </strong><span
+                                                class="float-right">{{this.orderVehicleNumber}}</span>
+                                        </li>
+                                        <li class="list-group-item"><strong class="float-left"> Vehicle Type:
+                                            </strong><span
+                                                class="float-right">{{this.orderType}}</span>
+                                        </li>
+                                        <li class="list-group-item"><strong class="float-left"> Order Slot Date:
+                                            </strong><span
+                                                class="float-right">{{this.orderSlotdate}}</span>
+                                        </li>
+                                        <li class="list-group-item"><strong class="float-left"> Order Slot Time:
+                                            </strong><span
+                                                class="float-right">{{this.orderSlottime}}</span>
+                                        </li>
+                                        <li class="list-group-item"><strong class="float-left"> Order Vehicle:
+                                            </strong><span
+                                                class="float-right">{{this.orderCarTitle}} {{this.orderModelName}}</span>
+                                        </li>
+                                         <li class="list-group-item"><strong class="float-left"> Order Service Station:
+                                            </strong><span
+                                                class="float-right">{{this.orderServiceCenter}}</span>
+                                        </li>
+                                        <li class="list-group-item"><strong class="float-left"> {{ @root.__ "Email address" }}:
+                                            </strong><span class="float-right">{{this.orderEmail}}</span></li>
+
+                                        <li class="list-group-item"><strong class="float-left"> {{ @root.__ "Name" }}:
+                                            </strong><span class="float-right">{{this.orderFirstname}} {{this.orderLastname}}</span></li>
+                                        <li class="list-group-item"><strong> {{ @root.__ "Pick Up Info" }}: </strong><span class="float-right">Name: {{this.orderPickup.name}}, Phone {{this.orderPickup.phone}},Address {{this.orderPickup.address}},City {{this.orderPickup.city}}, {{this.orderPickup.postcode}}</span></li>
+            <li class="list-group-item"><strong> {{ @root.__ "Drop Info" }}: </strong><span class="float-right">Name: {{this.orderDrop.name}}, Phone {{this.orderDrop.phone}},Address {{this.orderDrop.address}},City {{this.orderDrop.city}}, {{this.orderDrop.postcode}}</span></li>
+                                        <li class="list-group-item"><strong class="float-left"> {{ @root.__ "Phone number" }}:
+                                            </strong><span class="float-right">{{this.orderPhoneNumber}}</span></li>
+                                        <li class="list-group-item">&nbsp;</li>
+                                        <li class="list-group-item"><strong
+                                                class="text-info">{{ @root.__ "Products ordered" }}</strong></li>
+                                        {{#each this.orderProducts}}
+                                        <li class="list-group-item">
+                                            {{this.quantity}} x {{this.title}}
+                                            {{#if this.variantId}}
+                                            &nbsp; > &nbsp;
+                                            <span class="text-warning"> {{ @root.__ "Options" }}: </span>
+                                            {{this.variantTitle}}
+                                            {{/if}}
+                                            <div class="float-right">
+                                                {{currencySymbol @root.config.currencySymbol}}{{formatAmount this.totalItemPrice}}
+                                            </div>
+                                            {{#if productComment}}
+                                            <h4><span class="text-danger">Comment:</span> {{this.productComment}}
+                                            </h4>
+                                            {{/if}}
+                                        </li>
+                                        {{/each}}Paid
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+    </div>
+</div>
+<script>
+    
+        $.ajax("https://docs.google.com/spreadsheets/d/e/2PACX-1vRqbwJsGVZKgVJwReXxTb3IEPC2iEnvXgXVmXHF9SZ0foyZRzCaLzAqKNweQAMa4WnAK8MsX2VTvkgD/pub?gid=0&single=true&output=csv").done(function(result){
+            console.log(result);
+        });
+</script>

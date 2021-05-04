@@ -1,0 +1,39 @@
+  <div class="row top-marg-75">
+    <form action="/customer/userEditPick/submit" method="POST" class="">
+        <div id="content" class="col-md-12 ">
+            <input type="hidden" id="customerId" name ="customerId" value={{dataValue}}>
+            <div class="addaddress">
+                
+                <div class="form1control col-6 row mx-auto" id="dropdowndrop" name="dropdowndrop">
+                  <div class="col-12">
+                    <h3>Edit Address</h3>
+                  </div>
+                  <div class="forminput col-5">
+                    <input type="text" class="inputcontrol" id="namedrop" name="namedrop" value={{name}}>
+                    <label for="namedrop" style="margin-top: -14px;">Name</label>
+                  </div>
+                  <div class="forminput col-6">
+                    <input type="text" class="inputcontrol" id="phonedrop" name="phonedrop" value={{phone}}>
+                     <label for="phonedrop" style="margin-top: -14px;">Phone Number</label>
+                  </div>
+                  <div class="forminput col-11">
+                    <input type="text" class="inputcontrol" id="adddrop" name="adddrop" value={{addressline}}>
+                    <label for="adddrop" style="margin-top: -14px;">Address</label>
+                  </div>
+                  <div class="forminput col-5">
+                    <input type="text" class="inputcontrol" id="citydrop" name="citydrop" value={{city}}>
+                    <label for="citydrop" style="margin-top: -14px;">City</label>
+                  </div>
+                  <div class="forminput col-6">
+                    <input type="text" class="inputcontrol" id="pindrop" name="pindrop" value={{pincode}}>
+                     <label for="pindrop" style="margin-top: -14px;">PinCode</label>
+                  </div>
+
+                  <div class="col-6">
+                    <button type="submit">Submit</button>
+                  </div>
+                </div>
+              </div>
+              </form>
+            </div>
+          </div>

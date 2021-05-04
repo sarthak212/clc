@@ -1,0 +1,143 @@
+
+<input type="hidden" id="customerId" value={{customerArray._id}}>
+<main class="width100 top-marg-75" style="background: #F6F9FC">
+  <section class="">
+    <div class="">
+      <!-- Content-->
+      <!-- Checkout form-->
+
+        <div class="row">
+          <!-- Delivery details-->
+          <div class="col-sm-11 col-md-12 col-lg-6 col-xl-6 mx-auto mb-3">
+            <div class="logininfo">
+              <div class="image">
+                <img src="/images/user.png" alt="User png">
+              </div>
+              <div class="content">
+                <div class="loghead">
+                  Login
+                </div>
+                <div class="name">
+                  <span>{{@root.session.customerEmail}}</span>
+                </div>
+              </div>
+            </div>
+            <div class="addressavailable">
+              <div class="addressheading">
+                Pick Up Address
+              </div>
+              <div class="addresses">
+                 {{#each customerArray.pickupaddress}}
+                <div class="address">
+                  <div class="number">
+                    {{#ifCond @root.session.customerpickaddress "==" this.addressline}}
+                    <div>
+                      <img src="/images/tick1.png" alt="Choose Address">
+                    </div>
+                    {{/ifCond}}
+                    <div>
+                      <h4>{{this.name}} {{this.phone}} ({{this.alternatePhone}})</h4>
+                    </div>
+                  </div>
+                  <div class="add">
+                 {{this.addressline}} {{this.city}}, {{this.pincode}}
+                  </div>
+                  {{#ifCond @root.session.customerpickaddress "!=" this.addressline }}
+                  <div class="button">
+                    <button class="usepickaddress" data-id="{{@key}}">Use This Address</button>
+                  </div>
+                  {{/ifCond}}
+                </div>
+                <hr>
+                {{/each}}
+              </div>
+              <div class="addaddress">
+                <div class="addheading" id="pickupaddnew">
+                  <i class="fas fa-plus"></i> Add New Address
+                </div>
+                <div class="form1control col-12 row collapse" id="dropdownpick">
+                  <div class="forminput col-5">
+                    <input type="text" class="inputcontrol" id="namepick">
+                    <label for="namepick">Name</label>
+                  </div>
+                  <div class="forminput col-5">
+                    <input type="text" class="inputcontrol" id="phonepick">
+                    <label for="phonepick">Phone</label>
+                  </div>
+                   <div class="forminput col-5">
+                    <input type="text" class="inputcontrol" id="phonepickAlternate">
+                    <label for="phonepickAlternate">Alternate Phone Number</label>
+                  </div>
+                  <div class="forminput col-11">
+                    <input type="text" class="inputcontrol" id="addpick">
+                    <label for="addpick">Address</label>
+                  </div>
+                  <div class="forminput col-5">
+                    <input type="text" class="inputcontrol" id="citypick">
+                    <label for="citypick">City</label>
+                  </div>
+                  <div class="forminput col-6">
+                    <input type="text" class="inputcontrol" id="pinpick">
+                     <label for="pinpick">PinCode</label>
+                  </div>
+                  <div class="col-6">
+                    <button type="button" id="pickup">Add & Use this</button>
+                  </div>
+                </div>
+              </div>
+           
+            </div>
+
+          </div>
+          <!-- Order summary + payment-->
+          <div class="col-sm-11 col-md-12 col-lg-5 col-xl-5 mx-auto checkdetails">
+            <div class="rounded-lg">
+              <h2 class="heading pb-3">Your <span>order</span></h2>
+              <table>
+                <tr class="headingtable">
+                  <th>Service Name</th>
+                  <th>Approx Time</th>
+                </tr>
+                {{#each @root.session.cart}}
+                <tr>
+                  <td>{{this.title}}</td>
+                  <td>{{this.estimateTime}}</td>
+                </tr>
+                {{/each}}
+              </table>
+            </div>
+            <div class="timing">
+              <h4>TIMING</h4>
+           
+              <h5><i class="fas fa-circle"></i> {{@root.session.slotdate}} <span>{{@root.session.slottime}}</span></h5>
+            </div>
+            <br>
+            <div class="timing">
+              <h4>Vehicle Number</h4>
+              <h5><i class="fas fa-circle"></i> {{@root.session.vehicleNumber}} </h5>
+            </div>
+            <div class="pt-2">
+               <form action="/checkout_action" class="container" method="POST">
+              {{!-- id="add-to-reg" type="submit"  --}}
+              <button class="btn">BOOK SLOT</button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+    </div>
+  </section>
+</main>
+<a class="btn-scroll-top" href="#top" data-scroll><span
+    class="btn-scroll-top-tooltip text-muted font-size-sm mr-2">Top</span><i class="btn-scroll-top-icon czi-arrow-up">
+  </i></a>
+
+  <script>
+    $('#dropaddnew').on('click',()=>{
+      $('#dropdowndrop').addClass('show');
+    });
+    $('#pickupaddnew').on('click',()=>{
+      $('#dropdownpick').addClass('show');
+    });
+  </script>

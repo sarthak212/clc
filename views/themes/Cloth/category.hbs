@@ -1,0 +1,218 @@
+{{!-- <div class="Wrapper-product">
+<div class="filter">
+<div class="filterinner">
+        <div class="closefilter">
+        <button>Close <i class="fas fa-times"></i></button>
+    </div>
+        <div class="filter-title">
+        <h3>Filter</h3>
+        <button><i class="fas fa-sync-alt"></i> Clear All</button>
+    </div>
+    <div class="price-range filter-com">
+        <h4>Price</h4>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                <div id="slider-range"></div>
+                </div>
+            </div>
+            <div class="row slider-labels">
+                <div class="col-xs-6 caption">
+                <strong>Min:</strong> <span id="slider-range-value1"></span>
+                </div>
+                <div class="col-xs-6 caption">
+                <strong>Max:</strong> <span id="slider-range-value2"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                <form>
+                    <input type="hidden" name="min-value" value="">
+                    <input type="hidden" name="max-value" value="">
+                </form>
+                </div>
+            </div>
+    </div>
+    </div>
+    <div class="filter-stock filter-com">
+        <h4>Stock</h4>
+        <div class="checkinner">
+            <input type="checkbox" name="instock" id="instock">
+            <label for="instock">In Stock</label>
+        </div>
+        <div class="checkinner">
+            <input type="checkbox" name="outstock" id="outstock">
+            <label for="instock">Out of Stock</label>
+        </div>
+    </div>
+     <div class="filter-common filter-com">
+        <h4>Discount</h4>
+        <div class="checkinner">
+            <input type="checkbox" name="instock" id="instock">
+            <label for="instock">5% - 15%</label>
+        </div>
+        <div class="checkinner">
+            <input type="checkbox" name="instock" id="instock">
+            <label for="instock">15% - 25%</label>
+        </div>
+        <div class="checkinner">
+            <input type="checkbox" name="instock" id="instock">
+            <label for="instock">Above 25%</label>
+        </div>
+    </div>
+     <div class="filter-common filter-com">
+        <h4>Pack Size</h4>
+        <div class="checkinner">
+            <input type="checkbox" name="instock" id="instock">
+            <label for="instock">Below 100g</label>
+        </div>
+        <div class="checkinner">
+            <input type="checkbox" name="instock" id="instock">
+            <label for="instock">100g - 500g</label>
+        </div>
+        <div class="checkinner">
+            <input type="checkbox" name="instock" id="instock">
+            <label for="instock">500g - 1000g</label>
+        </div>
+        <div class="checkinner">
+            <input type="checkbox" name="instock" id="instock">
+            <label for="instock">Above 1Kg</label>
+        </div>
+    </div>
+    <div class="filter-common filter-com">
+        <h4>Sort By</h4>
+        <div class="checkinner">
+            <input type="checkbox" name="instock" id="instock">
+            <label for="instock">Most Buy</label>
+        </div>
+        <div class="checkinner">
+            <input type="checkbox" name="instock" id="instock">
+            <label for="instock">New Products</label>
+        </div>
+    </div>
+</div>
+</div>
+<div class="productsWrapper">
+    {{#if filtered}}
+        <div class="product-results col-sm-12">
+                    <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Show
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="#">10</a>
+            <a class="dropdown-item" href="#">30</a>
+            <a class="dropdown-item" href="#">All</a>
+        </div>
+        </div>
+            {{#ifCond @root.paginateUrl '==' 'category'}}
+            <h1>{{ @root.__ "Category" }} - <strong>{{@root.searchTerm}}</strong></h1>
+            {{else}}
+            <h1>{{ @root.__ "Search results" }} - <strong>{{@root.searchTerm}}</strong></h1>
+            {{/ifCond}}
+        </div>
+    {{/if}}
+    <div class="row product-layout">
+        {{#ifCond results.length '==' 0}}
+            <div class="col-sm-12">
+                <img src="/images/no-product-found.png" alt="No Product Found" class="mx-auto">
+            </div>
+        {{/ifCond}}
+        {{#each results}}
+            <div class="box">
+                <div class="single-product">
+                        <div class="product-wrapper">
+                                <div class="product-thumb">
+                                    {{#if productImage.path}}
+                                        <img src="{{this.productImage.path.[0].path}}" alt="...">
+                                    {{else}}
+                                        <img src="/uploads/placeholder.png" alt="...">
+                                    {{/if}}
+                                    <a class="btn-round" data-id="{{this._id}}" data-link="{{this.productPermalink}}" data-has-variants="{{checkProductVariants this.variants}}" role="button"><i class="fa fa-shopping-cart"></i></a>
+                                </div>
+                        </div>
+                    <div class="product-title">
+                        <h3>
+                            {{#if productPermalink}}
+                                <a href="/product/{{this.productPermalink}}">{{this.productTitle}}</a>
+                            {{else}}
+                                <a href="/product/{{this._id}}">{{this.productTitle}}</a>             
+                            {{/if}}
+                            </h3>
+                            <p>
+                            {{currencySymbol @root.config.currencySymbol}}{{formatAmount productPrice}}
+                            <span>{{currencySymbol @root.config.currencySymbol}}</span>
+                        </p>
+                            <span class="save">Save ₹32</span>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div> 
+</div> --}}
+
+<div class="uppercategory">
+    <img src="/images/electrician.jpg" alt="">
+    <h2 class="breadcrumb-lower">Extraordinary rooms with elegant, yet a rustic atmosphere</h2>
+</div>
+ <section class="u-align-center u-clearfix u-grey-5 u-section-2" id="sec-85e1">
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+       
+        <div class="u-list u-repeater u-list-1">
+          <div class="u-container-style u-list-item u-repeater-item u-video-cover u-white u-list-item-1">
+            <div class="u-container-layout u-similar-container u-container-layout-1">
+              <img alt="" class="u-expanded-width u-image u-image-default u-image-1" src="https://images03.nicepage.io/c461c07a441a5d220e8feb1a/8f786cf5841a5576a626ec60/australian-modern-bedroom-interior-nature-window_31965-3690.jpg">
+              <div class="u-align-center u-container-style u-expanded-width-lg u-expanded-width-md u-expanded-width-xl u-group u-video-cover u-group-1">
+                <div class="u-container-layout u-valign-top u-container-layout-2">
+                  <h4 class="u-custom-font u-font-roboto-condensed u-text u-text-default u-text-2">Apartment - Ground Floor</h4>
+                  <h5 class="u-text u-text-palette-1-base u-text-3">44 m²</h5>
+                  <p class="u-text u-text-default u-text-4">This apartment features a electric kettle, sofa and private entrance.</p>
+                  <a href="/checkout/information" class="u-border-2 u-border-grey-25 u-btn u-btn-rectangle u-button-style u-none u-text-body-color u-btn-1">book room</a>
+                </div>
+              </div>
+            </div>
+          </div>
+         
+          {{#each results}}
+           <form action="/product/save" method="POST">
+          <div class="u-align-center u-container-style u-list-item u-repeater-item u-video-cover u-white u-list-item-2">
+            <div class="u-container-layout u-similar-container u-container-layout-3">
+              <img alt="" class="u-expanded-width u-image u-image-default u-image-2" src="https://images03.nicepage.io/c461c07a441a5d220e8feb1a/8221d77e594e59b69451461a/modern-studio-apartment-design-with-bedroom-living-space_1262-12375.jpg">
+              <div class="u-align-center u-container-style u-expanded-width-lg u-expanded-width-md u-expanded-width-xl u-group u-video-cover u-group-2">
+                <div class="u-container-layout u-valign-top u-container-layout-4">
+                 <input type="hidden" name="productTitle" value="{{this.productTitle}}">
+                 <input type="hidden" name="productPrice" value="{{this.productPrice}}">
+                 <input type="hidden" name="productDescription" value="{{this.productDescription}}">
+                  <h4 class="u-custom-font u-font-roboto-condensed u-text u-text-5" >{{this.productTitle}}</h4>
+                  <h5 class="u-text u-text-palette-1-base u-text-6" name="productPrice">{{this.productPrice}} ₹</h5>
+                  <p class="u-text u-text-default u-text-7" name="productDescription">{{this.productDescription}}</p>  
+                </div>
+                 <div class="u-custom-font u-font-roboto-condensed u-text u-text-5">
+                    <button class="btn btn-primary btn-block btn-shadow" name="SubmitAndExit" value="{{this}}" type="submit">Book</button>
+                  </div>
+              </div>
+            </div>
+          </div>
+          
+          {{/each}}
+
+          <div class="u-container-style u-list-item u-repeater-item u-white u-list-item-3">
+            <div class="u-container-layout u-similar-container u-container-layout-5">
+              <img alt="" class="u-expanded-width u-image u-image-default u-image-3" src="https://images03.nicepage.io/c461c07a441a5d220e8feb1a/8dfdaaf6e4e4507081caf67f/luxury-bedroom-hotel_1150-10836.jpg">
+              <div class="u-align-center u-container-style u-expanded-width-lg u-expanded-width-md u-expanded-width-xl u-group u-group-3">
+                <div class="u-container-layout u-valign-top u-container-layout-6">
+                  <h4 class="u-custom-font u-font-roboto-condensed u-text u-text-8">Apartment with Park View</h4>
+                  <h5 class="u-text u-text-palette-1-base u-text-9">74 m²</h5>
+                  <p class="u-text u-text-default u-text-10">This apartment has a dining area, private entrance and kitchen.</p>
+                  <a href="https://nicepage.com/" class="u-border-2 u-border-grey-25 u-btn u-btn-rectangle u-button-style u-none u-text-body-color u-btn-3">book room</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          
+      </div>
+    </section>
+<button class="expand-filter">Filter<i class="fas fa-sort-amount-up-alt"></i></button>

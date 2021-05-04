@@ -1,0 +1,140 @@
+{{> partials/menu}}
+<div class="modal fade" id="updatestatusconfirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Status</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          Confirm Status Update
+          <br>
+        <sm class="text-danger">
+            If Status is completed then it will send Ebill to customer.
+        </sm>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id="vendororderStatusUpdate" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="confirmamount" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Enter Amount</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          Enter the service amount
+          <br>
+        <sm class="text-danger form-group">
+            <input type="text" id="orderamount" name="amount" class="form-control">
+        </sm>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id="saveamountchange" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main role="main" class="ml-sm-auto col-lg-10 px-4">
+    <div class="col-sm-12">
+        <h2>View Order</h2>
+    </div>
+    <div class="order-layout col-md-12">
+        <div class="row">
+            <div class="col-md-12 bottom-pad-20">
+                <button class="btn btn-outline-success float-left mx-2" data-toggle="modal" data-target="#confirmamount">{{ @root.__ "Enter Amount" }}</button>
+               <button class="btn btn-outline-info float-left mx-2" data-toggle="modal" data-target="#updatestatusconfirm">{{ @root.__ "Assign Supervisor" }}</button>
+               <button class="btn btn-outline-warning float-left mx-2" id="orderstatusupdate">{{ @root.__ "Update Status" }}</button>
+                <a href="/admin/orders" class="btn btn-outline-info float-right">{{ @root.__ "Go Back" }}</a>
+            </div>
+        </div>
+        <ul class="list-group">
+             <li class="list-group-item list-group-input-pad">
+           
+                <strong>Vendor: </strong>
+                <div class="float-right col-md-2">
+                    <input type="hidden" id="orderId" value="{{result._id}}">
+                    <select class="form-control" id="vendorId">
+                        {{#each vendor}}
+                        <option value={{this._id}}>{{this.userName}}</option>
+                         {{/each}}
+                    </select>
+                </div>
+            </li>
+            <li class="list-group-item list-group-input-pad">
+                <strong> Order status: </strong><span class="text-{{getStatusColor result.orderStatus}} float-right">{{result.orderStatus}}</span>
+                <div class="float-right col-md-2">
+                    <select class="form-control" id="orderStatus">
+                        <option>{{ @root.__ "Completed" }}</option>
+                        <option>{{ @root.__ "Booked" }}</option>
+                        <option>{{ @root.__ "Accepted" }}</option>
+                        <option>{{ @root.__ "Vehicle PickUp" }}</option>
+                        <option>{{ @root.__ "Service Completed" }}</option>
+                        <option>{{ @root.__ "Cancelled" }}</option>
+                    </select>
+                </div>
+            </li>
+            <li class="list-group-item"><strong> {{ @root.__ "Order date" }}: </strong><span class="float-right">{{formatDate result.orderDate "DD/MM/YYYY hh:mmA"}}</span></li>
+            <li class="list-group-item"><strong> {{ @root.__ "Order ID" }}: </strong><span class="float-right">{{result._id}}</span></li>
+            <li class="list-group-item"><strong> {{ @root.__ "Payment Gateway ref" }}: </strong><span class="float-right">{{result.orderPaymentId}}</span></li>
+            <li class="list-group-item"><strong> {{ @root.__ "Payment Gateway" }}: </strong><span class="float-right">{{result.orderPaymentGateway}}</span></li>
+            {{#if result.orderExpectedBtc }}
+            <li class="list-group-item"><strong> {{ @root.__ "Order Expected BTC" }}: </strong><span class="float-right">{{result.orderExpectedBtc}}</span></li>
+            {{/if}}
+            {{#if result.orderReceivedBtc }}
+            <li class="list-group-item"><strong> {{ @root.__ "Order Received BTC" }}: </strong><span class="float-right">{{result.orderReceivedBtc}}</span></li>
+            {{/if}}
+            {{#if result.orderBlockonomicsTxid }}
+            <li class="list-group-item"><strong> {{ @root.__ "Order Blockonomics Txid" }}: </strong><span class="float-right">{{result.orderBlockonomicsTxid}}</span></li>
+            {{/if}}
+            {{#if result.orderPaymentMessage}}
+            <li class="list-group-item"><strong> {{ @root.__ "Payment Message" }}: </strong><span class="float-right">{{result.orderPaymentMessage}}</span></li>
+            {{/if}}
+            <li class="list-group-item"><strong> {{ @root.__ "Order Amount" }}: </strong><span class="float-right">{{currencySymbol config.currencySymbol}}{{formatAmount result.orderPrice}}</span></li>
+            <li class="list-group-item"><strong> {{ @root.__ "Email address" }}: </strong><span class="float-right">{{result.orderEmail}}</span></li>
+            
+            <li class="list-group-item"><strong> {{ @root.__ "Name" }}: </strong><span class="float-right">{{result.orderFirstname}} {{result.orderLastname}}</span></li>
+            
+            <li class="list-group-item"><strong> {{ @root.__ "Pick Up Info" }}: </strong><span class="float-right">Name: {{result.orderPickup.name}}, Phone {{result.orderPickup.phone}},AlternatePhone:{{result.orderPickup.alternatePhone}},Address {{result.orderPickup.address}},City {{result.orderPickup.city}}, {{result.orderPickup.postcode}}</span></li>
+            <li class="list-group-item"><strong> {{ @root.__ "Drop Info"}}: </strong><span class="float-right">Name: {{result.orderDrop.name}}, Phone {{result.orderDrop.phone}},AlternatePhone:{{result.orderPickup.alternatePhone}},Address {{result.orderDrop.address}},City {{result.orderDrop.city}}, {{result.orderDrop.postcode}}</span></li>
+
+            <li class="list-group-item"><strong> SlotDate: </strong><span class="float-right">{{result.orderSlotdate}},{{result.orderSlottime}}</span></li>
+ 
+              <li class="list-group-item"><strong>orderPrice: </strong><span class="float-right">{{result.orderPrice}}</span></li>
+              <li class="list-group-item"><strong>orderDescription: </strong><span class="float-right">{{result.orderDescription}}</span></li>
+              <li class="list-group-item"><strong>orderTitle: </strong><span class="float-right">{{result.orderTitle}}</span></li>
+            <li class="list-group-item"><strong> {{ @root.__ "Phone number" }}: </strong><span class="float-right">{{result.orderPhoneNumber}}</span></li>
+            <li class="list-group-item"><strong> {{ @root.__ "Order type" }}: </strong><span class="float-right">{{result.orderType}}</span></li>
+            
+
+            <li class="list-group-item">&nbsp;</li>
+            <li class="list-group-item"><strong class="text-info">{{ @root.__ "Products ordered" }}</strong></li>
+            {{#each result.orderProducts}}
+                <li class="list-group-item">
+                    {{this.quantity}} x {{this.title}}
+                    {{#if this.variantId}}
+                        &nbsp; > &nbsp;
+                        <span class="text-warning"> {{ @root.__ "Options" }}: </span>
+                        {{this.variantTitle}}
+                    {{/if}}
+                    <div class="float-right">{{currencySymbol @root.config.currencySymbol}}{{formatAmount this.totalItemPrice}}</div>
+                    {{#if productComment}}
+                    <h4><span class="text-danger">Comment:</span> {{this.productComment}}</h4>
+                    {{/if}}
+                </li>
+            {{/each}}
+        </ul>
+        <input type="hidden" id="order_id" value="{{result._id}}">
+    </div>
+</main>

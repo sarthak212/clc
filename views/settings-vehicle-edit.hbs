@@ -1,0 +1,73 @@
+{{> partials/menu}}
+<script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+<main role="main" class="ml-sm-auto col-lg-10 px-4 checkout_details_area bg-light">
+    <div class="col-sm-12">
+        <h3>Edit Vehicle Company</h3>
+        <div class="row top-marg-25">
+            <div class="col-9">
+                <input type="text" class="form-control" id="newCategoryValue" value="{{category.title}}">
+            </div>
+            <div class="col-2">
+                <button class="btn btn-success" id="changeCategoryname" data-id="{{category._id}}">Save</button>
+            </div>
+            <div class="col-sm-12 offset-sm-1 top-marg-25">
+                <h3>Submenus</h3>
+                <input type="hidden" id="categoryidvalue" value="{{category._id}}">
+                <ul class="top-marg-25">
+                    {{#each category.submenu}}
+                        <li class="top-marg-15 marg-left-10">
+                            <h5 style="display: inline;">{{this.name}}</h5>
+                            <img src="{{this.path}}" alt="{{this.name}}" width="150" height="100">
+                            <button class="btn btn-outline-danger marg-left-10 deletesubmenu" data-value="{{this.id}}"><i class="fas fa-times marg-right-7"></i>Delete</button>
+                        </li>
+                    {{/each}}
+                </ul>
+            </div>
+            <h4 class="top-marg-25 col-12">Add New SubMenu</h4>
+            <div class="col-sm-6 offset-sm-1 top-marg-25">
+                <input type="text" class="form-control" style="border: 1px solid #666;" id="navsubmenuvalue" placeholder="Categories Submenu Value">
+                <form method="post" id="uploadForm1" enctype="multipart/form-data"></form>
+                <span class="btn btn-outline-info btn-file">
+                    {{ @root.__ "Select file" }}<input type="file" name="uploadFile1" id="uploadFile1" form="uploadForm1" onchange="readURL(this)">
+                </span>
+                 <img id="blah" src="#" alt="Your image" />
+                 <div class="vehicletype">
+                            <div class="ui fluid search selection dropdown">
+  <input type="hidden" id="vehicletype" name="vehicletype">
+  <i class="dropdown icon"></i>
+  <div class="default text">Vehicle Type</div>
+  <div class="menu">
+   <div class="item" data-value="bike"><i class=""></i>Bike</div>
+  <div class="item" data-value="car"><i class=""></i>Car</div>
+</div>
+ </div>
+                 </div>
+            </div>
+            <div class="col-sm-3 top-marg-25">
+                <button id="settings-vehicle-update" class="btn btn-success" data-id={{category._id}}>
+                    Add New Submenu
+                </button>
+            </div>
+        </div>
+        <p class="text-muted mt-4">
+            Categories For filter and Nav Bar
+        </p>
+    </div>
+</main>
+<script>
+      function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(100);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+</script>

@@ -1,0 +1,39 @@
+{
+    "$id": "newCustomer",
+    "type": "object",
+    "properties": {
+        "email": {
+            "type": "string",
+            "format": "emailAddress"
+        },
+        "firstName": {
+            "type": "string",
+            "isNotEmpty": true
+        },
+        "lastName": {
+            "type": "string",
+            "isNotEmpty": true
+        },
+        "phone": {
+            "type": "string",
+            "isNotEmpty": true
+        },
+        "password": {
+            "type": "string",
+            "isNotEmpty": true
+        },
+        "pickupaddress": {
+            "type": ["object"]
+        }
+    },
+    "required": [
+        "email",
+        "firstName",
+        "lastName",
+        "address1",
+        "state",
+        "postcode",
+        "phone",
+        "password"
+    ]
+}

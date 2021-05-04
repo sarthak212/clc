@@ -1,0 +1,128 @@
+{{> partials/menu}}
+<main role="main" class="ml-sm-auto col-lg-10 px-4">
+    <form class="form-horizontal" id="productEditForm" data-toggle="validator">
+            <div class="col-12">
+                <div class="page-header">
+                    <div class="float-right">
+                        <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#myModal">{{ @root.__ "Upload image" }}</button>
+                        <button id="productUpdate" class="btn btn-outline-success">{{ @root.__ "Save product" }}</button>
+                    </div>
+                    <h2>{{ @root.__ "Edit product" }}</h2>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="productTitle" class="control-label">{{ @root.__ "Product title" }} *</label>
+                    <input type="text" id="productTitle" class="form-control" minlength="5" maxlength="200" value="{{result.productTitle}}" required/>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="productPrice" class="control-label">{{ @root.__ "Product price" }} *</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text">{{currencySymbol config.currencySymbol}}</label>
+                        </div>
+                        <input type="number" id="productPrice" class="form-control" value="{{result.productPrice}}" step="any"/>
+                    </div>
+                </div>
+            </div>
+             <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="productPrice" class="control-label">Category *</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                           
+                 <select class="form-control" id="VehicleId">
+                        <option value="Electrician">Electrician</option>
+                        <option value="Plumber">Plumber</option>
+                        <option value="CCTU">CCTU</option>
+                        <option value="Fire">Fire Security</option>
+                        <option value="AC">AC services</option>
+                        <option value="Photographer">Photographer</option>
+                        <option value="Phone">Phone Repair</option>
+                        <option value="Laptop">Laptop repair</option>
+                        <option value="Watch">Watch Repair</option>
+                        <option value="CA">CA</option>
+                        <option value="Lawyer">Lawyer</option>
+                        <option value="Webiste">Webiste Development</option>
+                        <option value="C.S">C.S</option>
+                        <option value="ITR">ITR</option>
+                        <option value="Architect">Architect</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="XYZ 0">XYZ 0</option>
+                        <option value="XYZ 1">XYZ 1</option>
+                        <option value="XYZ 2">XYZ 2</option>
+                    </select>                       
+                     </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="productDescription" class="control-label">{{ @root.__ "Product description" }} *</label>
+                    <textarea minlength="5" rows="10" id="productDescription" class="form-control" required>{{result.productDescription}}</textarea>
+                </div>
+            </div>
+    
+            <div class="col-sm-12">
+                <div id="product-images">
+                    <h2>{{ @root.__ "Product images" }}</h2>
+                    {{#if images}}
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div>
+                                <a data-id="{{result._id}}" class="btn-delete-image btn btn-outline-danger">{{ @root.__ "Delete" }}</a>
+                            </div>
+                            <img src="{{result.productImage.path}}" class="product-main-image img-fluid">
+                        </div>
+                    </div>
+                    {{else}}
+                        <h4 class="text-warning">{{ @root.__ "No images have been uploaded for this product" }}</h4>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+        <input type="hidden" id="productId" value="{{result._id}}" />
+    </form>
+</main>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" id="uploadForm" enctype="multipart/form-data"></form>
+            <div class="modal-header">
+                <button type="button" class="close marg-left-5" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">{{ @root.__ "Product image upload" }}</h4>
+            </div>
+            <div class="modal-body">
+                <span class="btn btn-outline-info btn-file">
+                    {{ @root.__ "Select file" }}<input type="file" name="uploadFile" id="uploadFile" form="uploadForm" onchange="readURL(this)">
+                </span>
+                 <img id="blah" src="#" alt="Your image" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" id="uploadButton" class="btn btn-outline-primary">{{ @root.__ "Upload" }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+      function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width(80)
+                    .height(100);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+</script>

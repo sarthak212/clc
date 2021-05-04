@@ -1,0 +1,81 @@
+
+    <!-- Page Content-->
+    <div class="container pb-5 mb-2 mb-md-4">
+        <div class="row justify-content-centre">
+            <!-- List of items-->
+            <section class="col-lg-8 carttable">
+
+                <table>
+                <tr class="headingtable">
+                    <th></th>
+                  <th>Service Name</th>
+
+                  <th></th>
+                </tr>
+                {{#each @root.session.cart}}
+                <tr>
+                <td><img src="{{this.productImage.path}}" alt=""></td>
+                  <td>{{this.title}}</td>
+                  <td><button data-cartid="{{@key}}" class="btn btn-delete-from-cart" type="button">Remove</button></td>
+                </tr>
+                {{/each}}
+              </table>
+                {{#if @root.session.cart}}
+                <button id="empty-cart" class="btn emptycart" type="button">
+                    <i class="czi-trash font-size-base mr-2 cart-contents-shipping"></i>Empty cart</button>
+                {{/if}}
+            </section>
+            <!-- Sidebar-->
+            <aside class="col-lg-4 pt-4 pt-lg-0">
+                <div class="cz-sidebar-static rounded-lg box-shadow-lg ml-lg-auto">
+                    {{#if @root.session.cart}}
+                    <form action="/customer/slotchange" method="post">
+                    <div class="cart-contents-shipping">
+                        <div class="text-center mb-4 pb-3 border-bottom">
+                            <h2 class="h4 mb-2">Pick a <span>Slot</span></h2>
+                        </div>
+                     <div class="slotpick form1control">
+                         
+                         <div class="date forminput">
+                         <input type="text" id="datepicker" name="datepicker">
+                         <label for="datepicker">Date</label>
+                         </div>
+                         <div class="time">
+                              <select class="ui dropdown width100" id="slottime" name="slottime">
+                                <option value="">Pickup Time</option>
+                                <option value="6AM - 8AM">6AM - 8AM</option>
+                                <option value="8AM - 10AM">8AM - 10AM</option>
+                                <option value="10AM - 12PM">10AM - 12PM</option>
+                            </select>
+                         </div>
+                         <div class="forminput">
+                             <input type="text" name="vehicleNumber" placeholder="Enter Vehicle Number" required>
+                         </div>
+                         
+                     </div>
+                    </div>
+                    <button class="btn btn-primary btn-shadow btn-block mt-4" >
+                        <i class="czi-card font-size-lg mr-2"></i>Proceed to Checkout</button>
+                    </form>
+                    {{else}}
+                    <div id="cart-empty" class="d-flex flex-row cart-empty-align">
+                        <div class="cart-contents-shipping col-md-12 no-pad-left">
+                            Cart empty
+                        </div>
+                    </div>
+                    {{/if}}
+
+                </div>
+            </aside>
+        </div>
+    </div>
+     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+        $( function() {
+    $( "#datepicker" ).datepicker({maxDate: "+1m",minDate:1});
+  } );
+    $( function() {
+    $( ".time input" ).checkboxradio();
+  } );
+  </script>

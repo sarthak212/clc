@@ -1,0 +1,26 @@
+{
+    "$id": "editProduct",
+    "type": "object",
+    "properties": {
+        "productId": {
+            "type": "string"
+        },
+        "productTitle": {
+            "type": "string",
+            "isNotEmpty": true,
+            "minLength": 5
+        },
+        "productPrice": {
+            "type": "string"
+        },
+        "productDescription": {
+            "type": "string",
+            "isNotEmpty": true,
+            "minLength": 25
+        }
+    },
+    "required": [
+        "productTitle",
+        "productDescription"
+    ]
+}

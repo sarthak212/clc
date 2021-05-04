@@ -1,0 +1,51 @@
+{{> partials/menu}}
+<script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+<main role="main" class="ml-sm-auto col-lg-10 px-4 checkout_details_area bg-light">
+    <div class="col-sm-12">
+        <h2>Service Centre</h2>
+        {{#if servicecentre}}
+        <div id="draggable_list top-marg-25">
+            
+            <div class="row top-marg-25">
+                {{#each servicecentre}}
+                <div class="col-12 row mt-2">
+                    <div class="col-sm-4 offset-sm-1">
+                    <input class="form-control" type="text" value="{{this.title}}" disabled>
+                </div>
+                <div class="col-12 col-md-3">
+                    <input type="text" class="form-control" value="{{this.type}}" disabled>
+                </div>
+                <div class="col-sm-2">
+                    <button class="deleteservicecentre btn btn-danger" data-id="{{this._id}}">Delete</button>
+                </div>
+                </div>
+       {{/each}}
+        </div>
+            
+        </div>
+        {{/if}}
+        <div class="row top-marg-75">
+            <div class="col-12">
+                <h4>Add New Service Centre</h4>
+            </div>
+            <div class="col-sm-6 offset-sm-1 top-marg-25">
+                <input type="text" class="form-control" style="border: 1px solid #666;" id="newNavService" placeholder="ex. Gandhi Nagar">
+                
+            </div>
+            <div class="col-sm-3 top-marg-25">
+                <select name="servicetype" id="servicetype">
+                    <option value="bike">Bike</option>
+                    <option value="car">Car</option>
+                </select>
+                </div>
+            <div class="col-sm-3 top-marg-25">
+                <button type="submit" id="settings-service-new" class="btn btn-success">
+                    Add Service Centre
+                </button>
+            </div>
+        </div>
+        <p class="text-muted mt-4">
+            Place Name for service Centre
+        </p>
+    </div>
+</main>

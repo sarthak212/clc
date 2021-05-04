@@ -1,0 +1,144 @@
+<div class="choosedropdown">
+    <h3>SELECT <span>YOUR VEHICLE</span>
+    <img src="/images/speed.png" alt=""></h3>
+        
+        <div class="selectvehicle">
+          <a id="twowheeler" class="vehiclebutton active">Two Wheeler</a>
+          <a id="fourwheeler" class="vehiclebutton">Car</a>
+        </div>
+    <div class="dropform car">
+        <form class="formselection" action="/customer/value" method="post">
+            <div class="ua">
+                <div class="ui fluid search selection dropdown">
+  <input type="hidden" id="country" name="country" onchange="changemodal()">
+  <i class="dropdown icon"></i>
+  <div class="default text">Car Company</div>
+  <div class="menu">
+    {{#each vehicles}}
+  <div class="item" data-value="{{this._id}}"><i class=""></i>{{this.title}}</div>
+  {{/each}}
+</div>
+ </div>
+            </div>
+  <div class="ui selection dropdown one ua">
+    <input type="hidden" name="choices1">
+    <div class="default text">Model Name</div>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+      {{#each vehicles}}
+      {{#each this.submenu}}
+      <div class="item item2 disableitem {{../this._id}}" data-value="{{this.name}}">{{this.name}}</div>
+      {{/each}}
+      {{/each}}
+    </div>
+  </div>
+
+
+  <div class="ui selection dropdown two ua">
+    <input type="hidden" name="choices2">
+    <div class="default text">Service Centre Name</div>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+      {{#each servicecentre}}
+      <div class="item">{{this.title}}</div>
+      {{/each}}
+      
+    </div>
+  </div>
+  <div class="ua buttonua">
+      <button>Submit</button>
+  </div>
+
+        </form>
+    </div>
+    <div class="dropform bike show">
+        <form class="formselection" action="/customer/value2" method="post">
+            <div class="ua">
+                <div class="ui fluid search selection dropdown">
+  <input type="hidden" id="country1" name="country1" onchange="changemodal2()">
+  <i class="dropdown icon"></i>
+  <div class="default text">Bike / Scooty</div>
+  <div class="menu">
+    {{#each bike}}
+  <div class="item" data-value="{{this._id}}"><i class=""></i>{{this.title}}</div>
+  {{/each}}
+</div>
+ </div>
+            </div>
+  <div class="ui selection dropdown one ua">
+    <input type="hidden" name="choices1">
+    <div class="default text">Model Name</div>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+      {{#each bike}}
+      {{#each this.submenu}}
+      <div class="item item2 disableitem {{../this._id}}" data-value="{{this.name}}">{{this.name}}</div>
+      {{/each}}
+      {{/each}}
+    </div>
+  </div>
+
+
+  <div class="ui selection dropdown two ua">
+    <input type="hidden" name="choices2">
+    <div class="default text">Service Centre Name</div>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+     {{#each servicecentre3}}
+      <div class="item">{{this.title}}</div>
+      {{/each}}
+    </div>
+  </div>
+  <div class="ua buttonua">
+      <button class="btncolor">Submit</button>
+  </div>
+
+        </form>
+    </div>
+</div>
+<div class="top-marg-75 optionupper">
+    <h3>WHAT IS YOUR CAR MAKE?</h3>
+    <p>Choose you car maker from list or Explore more car maker from the list below</p>
+    <div class="carlogo">
+        <a><img src="/images/1.chevrolet logo.png" alt="chevrolet"></a>
+        <a ><img src="/images/1.fiat logo.png" alt="fiat"></a>
+        <a ><img src="/images/1.ford logo.png" alt="ford"></a>
+        <a ><img src="/images/1.honda logo.png" alt="honda"></a>
+        <a><img src="/images/1.hyundai logo.png" alt="hyundai"></a>
+        <a><img src="/images/1.Jeep logo.png" alt="isuzu"></a>
+        <a><img src="/images/1.Kia logo.png" alt="kia"></a>
+        <a><img src="/images/1.Mahindra logo.png" alt="mercedes"></a>
+        <a><img src="/images/1.Marutisuzuki logo.png" alt="maruti_suzuki"></a>
+        <a><img src="/images/1.MG logo.png" alt="toyota"></a>
+        <a><img src="/images/1.Nissan logo.png" alt="mahindra"></a>
+        <a><img src="/images/1.Renault logo.png" alt="mahindra"></a>
+        <a><img src="/images/1.Skoda logo.png" alt="mahindra"></a>
+        <a><img src="/images/1.tata logo.png" alt="mahindra"></a>
+        <a><img src="/images/1.toyota logo.png" alt="mahindra"></a>
+        <a><img src="/images/1.Volkswagen logo.png" alt="mahindra"></a>
+        <a><img src="/images/Audi-logo.jpg" alt="mahindra"></a>
+        <a><img src="/images/bajaj.png" alt="mahindra"></a>
+        <a><img src="/images/datsun.jpg" alt="mahindra"></a>
+        <a><img src="/images/Hero_MotoCorp-Logo.wine.png" alt="mahindra"></a>
+        <a><img src="/images/ktm-motorcycle-png.png" alt="mahindra"></a>
+        <a><img src="/images/royal-enfield-png.png" alt="mahindra"></a>
+        <a><img src="/images/tvs.png" alt="mahindra"></a>
+
+
+        {{!-- <a href=""><img src="/images/Tata.png" alt="bmw"></a> --}}
+    </div>
+</div>
+
+<script>
+    $('.ui.dropdown').dropdown('show');
+     function changemodal() {
+         var id = $('#country').val();
+         $('.item2').addClass('disableitem');
+            $('.'+id).removeClass('disableitem');
+    }
+    function changemodal2() {
+         var id = $('#country1').val();
+         $('.item2').addClass('disableitem');
+            $('.'+id).removeClass('disableitem');
+    }
+</script>

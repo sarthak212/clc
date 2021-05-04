@@ -1,0 +1,37 @@
+{{> partials/menu}}
+<main role="main" class="ml-sm-auto col-lg-10 px-4">
+	<div class="col-12">
+		<div class="page-header">
+			<div class="float-right">
+				<button type="submit" id="btnVendorAdd" class="btn btn-outline-success">{{ @root.__ "Create" }}</button>
+			</div>
+			<h2>{{ @root.__ "New Supervisor" }}</h2>
+		</div>
+		<form id="vendorNewForm" data-toggle="validator" autocomplete="off">
+			<div class="form-group">
+				<label>{{ @root.__ "Users name" }} *</label>
+				<input type="text" class="form-control" id="vendorName" value="{{vendor.vendorName}}" required>
+			</div>
+			<div class="form-group">
+				<label>{{ @root.__ "User email" }} *</label>
+				<input type="email" class="form-control" id="vendorEmail" value="{{vendor.vendorEmail}}" required>
+			</div>
+			<div class="form-group">
+				<label>{{ @root.__ "Phone Number" }} *</label>
+				<input type="number" class="form-control" id="vendorPhone" value="{{vendor.vendorPhone}}" required>
+			</div>
+            <div class="form-group">
+				<label>{{ @root.__ "Driving License" }} *</label>
+				<input type="text" class="form-control" id="vendorAadhar" value="{{vendor.vendorAadhar}}" required>
+			</div>
+			<div class="form-group">
+				<label>{{ @root.__ "User password" }} *</label>
+				<input type="password" class="form-control" id="vendorPassword" required>
+			</div>
+			<div class="form-group">
+				<label>{{ @root.__ "Password confirm" }} *</label>
+				<input type="password" data-match="#vendorPassword"  class="form-control" required>
+			</div>
+		</form>
+	</div>
+</main>

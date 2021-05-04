@@ -1,0 +1,78 @@
+<div class="container top-marg-75">
+    <div class="orderdetails">
+        <div class="row justify-content-centre">
+            <!-- List of items-->
+            <section class="col-lg-8 carttable">
+
+                <table>
+                <tr class="headingtable">
+                    <th></th>
+                  <th>Service Name</th>
+                  <th>Approx Time</th>
+                  <th></th>
+                </tr>
+                {{#each @root.order.orderProducts}}
+                <tr>
+                <td><img src="{{this.productImage}}" alt=""></td>
+                  <td>{{this.title}}</td>
+                  <td>{{this.estimateTime}}</td>
+                </tr>
+                {{/each}}
+              </table>
+            </section>
+            <!-- Sidebar-->
+            <aside class="col-12 col-lg-4 pt-4 pt-lg-0">
+                <div class="cz-sidebar-static rounded-lg box-shadow-lg ml-lg-auto">
+                    <div class="cart-contents-shipping">
+                        <div class="text-center mb-4 pb-3 border-bottom">
+                            <h2 class="h4 mb-2">Pay <span>Amount</span></h2>
+                        </div>
+                     <div class="slotpick form1control">
+                         <h3>Amount: <strong>₹ {{order.orderPrice}}</strong></h3>
+                         
+                     </div>
+                    </div>
+                    <button class="btn btn-primary btn-shadow btn-block mt-4" id="rzp-button1">Pay and Complete Order</button>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    var options = {    "key": "{{@root.keyId}}", // Enter the Key ID generated from the Dashboard
+        "amount": "{{@root.razoramount}}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise    
+        "currency": "INR",
+        "name": "Ghar2Garage",
+        "description": "Payment Gateway",
+        "image": "/images/logo.png",
+        "order_id": "{{@root.razorpayid}}", //Pass the `id` obtained in the previous step       
+        "handler": function (response){ 
+                    console.log(response);       
+                    $.ajax({
+                        method: 'POST',
+                        url: '/checkout/confirm/razorpay',
+                        data: {
+                            razorpay_payment_id: response.razorpay_payment_id,
+                            razorpay_order_id: response.razorpay_order_id,
+                            razorpay_signature: response.razorpay_signature
+                        }
+                    })
+                    .done(function (msg) {
+                        console.log(msg);
+                        window.location = "/success";
+                    })
+                    .fail(function (msg){
+                        console.log(msg);
+                        showNotification(msg.responseJSON.message, 'danger');
+                    });   
+                    }};
+        var rzp1 = new Razorpay(options);
+        document.getElementById('rzp-button1').onclick = function(e){
+                rzp1.open();
+                e.preventDefault();
+                }
+        </script>
+                   
+                    
+
+                </div>
+            </aside>
+        </div>
+    </div>
+</div>

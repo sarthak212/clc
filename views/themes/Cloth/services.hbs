@@ -1,0 +1,60 @@
+<div class="servicesupper">
+    <div class="upperbg">
+        <div>
+            <h3>Services <span>Available</span></h3>
+        <div class="afterhead">
+            <div class="line">
+                <div class="first"></div>
+                <div class="second"></div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="contentservices">
+        <div class="servicescardupper">
+            {{!-- Loop Start --}}
+         {{#each results}}
+            <div class="servicecard">
+                <div class="mostupper">
+                    <h4>{{this.productTitle}}</h4>
+                </div>
+                <div class="upper">
+                    <div class="image">
+                    <img src="{{this.productImage.path}}" alt="">
+                </div>
+                <div class="content">
+                    <p>{{this.productDescription}}.</p>   
+                </div>
+                </div>
+                <div class="lower">
+                   
+                   <div class="">
+                        <button data-id="{{this._id}}" class="add-to-cart"><img src ="/images/logo.jpeg"></img></button>
+                   </div>
+                </div>
+            </div>
+        {{/each}}
+            {{!-- Loop End --}}
+        </div>
+        <div class="cartype">
+            <h3>Your <span>Vehicle</span></h3>
+            <hr>
+            <div class="top-marg-25">
+                <img src="{{@root.carurl}}" alt="Hyundai ">
+            </div>
+            {{!-- Car Info --}}
+            <div class="">
+                <h4>{{carName}} <span>{{modelName}}</span></h4>
+
+                <h5>Service Centre- <span>{{serviceCenter}}</span></h5>
+               <div class="changeupper">
+                    <a href="/customer/options">Change Vehicle</a>
+               </div>
+                <div class="changeupper">
+                    <a href="/checkout/cart">Go to Cart</a>
+               </div>
+            </div>
+            {{!-- Car Info end --}}
+        </div>
+    </div>
+</div>
