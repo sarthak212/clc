@@ -160,23 +160,11 @@
  <section class="u-align-center u-clearfix u-grey-5 u-section-2" id="sec-85e1">
       <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
        
-        <div class="u-list u-repeater u-list-1">
-          <div class="u-container-style u-list-item u-repeater-item u-video-cover u-white u-list-item-1">
-            <div class="u-container-layout u-similar-container u-container-layout-1">
-              <img alt="" class="u-expanded-width u-image u-image-default u-image-1" src="https://images03.nicepage.io/c461c07a441a5d220e8feb1a/8f786cf5841a5576a626ec60/australian-modern-bedroom-interior-nature-window_31965-3690.jpg">
-              <div class="u-align-center u-container-style u-expanded-width-lg u-expanded-width-md u-expanded-width-xl u-group u-video-cover u-group-1">
-                <div class="u-container-layout u-valign-top u-container-layout-2">
-                  <h4 class="u-custom-font u-font-roboto-condensed u-text u-text-default u-text-2">Apartment - Ground Floor</h4>
-                  <h5 class="u-text u-text-palette-1-base u-text-3">44 m²</h5>
-                  <p class="u-text u-text-default u-text-4">This apartment features a electric kettle, sofa and private entrance.</p>
-                  <a href="/checkout/information" class="u-border-2 u-border-grey-25 u-btn u-btn-rectangle u-button-style u-none u-text-body-color u-btn-1">book room</a>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="u-list u-repeater u-list-1" style="padding: 10px 50px;">
+          
          
           {{#each results}}
-           <form action="/product/save" method="POST">
+           <form action="/product/save" method="POST" style="max-width: 400px;">
           <div class="u-align-center u-container-style u-list-item u-repeater-item u-video-cover u-white u-list-item-2">
             <div class="u-container-layout u-similar-container u-container-layout-3">
               <img alt="" class="u-expanded-width u-image u-image-default u-image-2" src="https://images03.nicepage.io/c461c07a441a5d220e8feb1a/8221d77e594e59b69451461a/modern-studio-apartment-design-with-bedroom-living-space_1262-12375.jpg">
@@ -195,24 +183,12 @@
               </div>
             </div>
           </div>
-          
+          </form>
           {{/each}}
 
-          <div class="u-container-style u-list-item u-repeater-item u-white u-list-item-3">
-            <div class="u-container-layout u-similar-container u-container-layout-5">
-              <img alt="" class="u-expanded-width u-image u-image-default u-image-3" src="https://images03.nicepage.io/c461c07a441a5d220e8feb1a/8dfdaaf6e4e4507081caf67f/luxury-bedroom-hotel_1150-10836.jpg">
-              <div class="u-align-center u-container-style u-expanded-width-lg u-expanded-width-md u-expanded-width-xl u-group u-group-3">
-                <div class="u-container-layout u-valign-top u-container-layout-6">
-                  <h4 class="u-custom-font u-font-roboto-condensed u-text u-text-8">Apartment with Park View</h4>
-                  <h5 class="u-text u-text-palette-1-base u-text-9">74 m²</h5>
-                  <p class="u-text u-text-default u-text-10">This apartment has a dining area, private entrance and kitchen.</p>
-                  <a href="https://nicepage.com/" class="u-border-2 u-border-grey-25 u-btn u-btn-rectangle u-button-style u-none u-text-body-color u-btn-3">book room</a>
-                </div>
-              </div>
-            </div>
-          </div>
+          
         </div>
           
       </div>
     </section>
-<button class="expand-filter">Filter<i class="fas fa-sort-amount-up-alt"></i></button>
+{{!-- <button class="expand-filter">Filter<i class="fas fa-sort-amount-up-alt"></i></button> --}}
