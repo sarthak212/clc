@@ -101,7 +101,16 @@ router.post('/checkout_action', (req, res, next) => {
         });
     });
 // });
-
+//
+router.get('/registrationLink',async(req,res,next) =>{
+    const config = req.app.config;
+    res.render(`${config.themeViews}LinkRegistration`, {
+        title: 'LinkRegistration',
+        config: req.app.config,
+        session: req.session,
+        helpers: req.handlebars.helpers,
+    });
+})
 // These is the customer facing routes
 router.get('/payment/:orderId', async (req, res, next) => {
     const db = req.app.db;
