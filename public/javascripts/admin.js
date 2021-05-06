@@ -97,7 +97,7 @@ $(document).ready(function (){
     });
 
     // call update settings API
-    $('#settingsForm').validator().on('submit', function(e){
+    $('#settingsForm').on('submit', function(e){
         if(!e.isDefaultPrevented()){
             e.preventDefault();
             // set hidden elements from codemirror editors
@@ -136,7 +136,7 @@ $(document).ready(function (){
         $('#userNewForm').submit();
     });
 
-    $('#userNewForm').validator().on('submit', function(e){
+    $('#userNewForm').on('submit', function(e){
         if(!e.isDefaultPrevented()){
             e.preventDefault();
             $.ajax({
@@ -161,7 +161,7 @@ $(document).ready(function (){
         $('#vendorNewForm').submit();
     });
 
-    $('#vendorNewForm').validator().on('submit', function(e){
+    $('#vendorNewForm').on('submit', function(e){
         if(!e.isDefaultPrevented()){
             e.preventDefault();
             $.ajax({
@@ -224,7 +224,7 @@ $(document).ready(function (){
         $('#userEditForm').submit();
     });
 
-    $('#userEditForm').validator().on('submit', function(e){
+    $('#userEditForm').on('submit', function(e){
         if(!e.isDefaultPrevented()){
             e.preventDefault();
             $.ajax({
@@ -251,7 +251,7 @@ $(document).ready(function (){
         $('#vendorEditForm').submit();
     });
 
-    $('#vendorEditForm').validator().on('submit', function(e){
+    $('#vendorEditForm').on('submit', function(e){
         if(!e.isDefaultPrevented()){
             e.preventDefault();
             $.ajax({
@@ -275,7 +275,7 @@ $(document).ready(function (){
         }
     });
 
-    $('#productNewForm').validator().on('submit', function(e){
+    $('#productNewForm').on('submit', function(e){
         if(!e.isDefaultPrevented()){
             e.preventDefault();
             console.log($('#productDescription').val());
@@ -305,7 +305,7 @@ $(document).ready(function (){
         }
     });
 
-    $('#productEditForm').validator().on('submit', function(e){
+    $('#productEditForm').on('submit', function(e){
         if(!e.isDefaultPrevented()){
             e.preventDefault();
             if($('#productPermalink').val() === '' && $('#productTitle').val() !== ''){
@@ -520,7 +520,7 @@ $(document).ready(function (){
     });
 
     // call update settings API
-    $('#updateCustomer').validator().on('click', function(e){
+    $('#updateCustomer').on('click', function(e){
         e.preventDefault();
         if($('#customer-form').validator('validate').has('.has-error').length === 0){
             $.ajax({
@@ -645,7 +645,7 @@ $(document).ready(function (){
         }
     });
 
-    $('#discountNewForm').validator().on('submit', function(e){
+    $('#discountNewForm').on('submit', function(e){
         if(!e.isDefaultPrevented()){
             e.preventDefault();
             $.ajax({
@@ -668,7 +668,7 @@ $(document).ready(function (){
         }
     });
 
-    $('#discountEditForm').validator().on('submit', function(e){
+    $('#discountEditForm').on('submit', function(e){
         if(!e.isDefaultPrevented()){
             e.preventDefault();
             $.ajax({
@@ -692,19 +692,7 @@ $(document).ready(function (){
         }
     });
 
-    $('#discountStart').datetimepicker({
-        uiLibrary: 'bootstrap4',
-        footer: true,
-        modal: true,
-        format: 'dd/mm/yyyy HH:MM',
-        showOtherMonths: true
-    });
-    $('#discountEnd').datetimepicker({
-        uiLibrary: 'bootstrap4',
-        footer: true,
-        modal: true,
-        format: 'dd/mm/yyyy HH:MM'
-    });
+   
 
     $(document).on('click', '#btnDiscountDelete', function(e){
         e.preventDefault();
