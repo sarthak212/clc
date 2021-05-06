@@ -3,7 +3,7 @@
 /* globals AdyenCheckout */
 $(document).ready(function (){
     // validate form and show stripe payment
-    // $('#stripeButton').validator().on('click', function(e){
+    // $('#stripeButton')..on('click', function(e){
     //     e.preventDefault();
     //     if($('#shipping-form').validator('validate').has('.has-error').length === 0){
     //         // if no form validation errors
