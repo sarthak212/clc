@@ -17,7 +17,7 @@
     "customCss": "",
     "currencySymbol": "₹",
     "paymentGateway": "stripe",
-    "databaseConnectionString": "mongodb://127.0.0.1:27017/fixnease",
+    "databaseConnectionString": "mongodb+srv://demo:demo@cluster0.bxcwc.mongodb.net/Cluster0?retryWrites=true&w=majority",
     "theme": "Cloth",
     "trackStock": false,
     "orderHook": "",
